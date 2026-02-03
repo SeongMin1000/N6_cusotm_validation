@@ -1,0 +1,9 @@
+{
+    "gdb_server_path": "C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.stlink-gdb-server.win32_2.2.200.202505060755/tools/bin",
+    "gcc_binary_path": "C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin",
+    "objcopy_binary_path": "C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-objcopy.exe",
+    "cubeide_path": "C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE",
+    "compiler_type": "gcc",
+    "cubeProgrammerCLI_binary_path": "C:/Program Files/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI.exe",
+    "iar_binary_path": "C:/Users/foobar/TOOLS/IAR/IAR9.30.1/common/bin/"
+}

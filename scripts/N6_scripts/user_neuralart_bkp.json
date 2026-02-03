@@ -1,0 +1,99 @@
+// This file provides information for the atonn compiler.
+// It allows to describe multiple use cases, that can be later referrenced in the call to stm.ai CLI.
+//
+// The "Globals" part is not mandatory
+//      Only one key is supported for now within this part:
+//      "NA_binary" : allows to indicate a path to an alternative binary when using the aton compiler
+// The "Profiles" part is mandatory in this file, and must be not empty:
+//      Each profile is made up of
+//          - the name of the profile (key of the profile)
+//          - a "memory_pool" key: path to a valid .mpool file (absolute, relative to the current file, ...)
+//          - a "machine_desc" key: path to a valid .mdesc file (absolute, relative to the current file, ...)
+//          - an "options" key: options to pass to the compiler
+//                IMPORTANT: The options shall contain --all-buffers-info if planning to use the "validation stack"
+{
+    "Globals": {
+    // Uncomment the following line to use your own atonn.exe compiler binary
+    //    "NA_binary": "C:\\Users\\foobar\\CODE\\ATON_Compiler\\v0.3.7-1382\\windows\\atonn.exe"
+    },
+    "Profiles": {
+        "n6-extram": {
+            "memory_pool": "./my_mpools/stm32n6__extRam.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options" : "--optimization 3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os"
+        },
+        "n6-extflash": {
+            "memory_pool": "./my_mpools/stm32n6__extFlash.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options" : "--optimization 3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os"
+        },
+        "n6-noextmem": {
+            "memory_pool": "./my_mpools/stm32n6__noextmem.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options" : "--optimization 3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os"
+        },
+        "n6-nointmem": {
+            "memory_pool": "./my_mpools/stm32n6__nointmem.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options" : "--optimization 3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os"
+        },
+        "n6-allmems-O1": {
+            "memory_pool": "./my_mpools/stm32n6.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options" : "--optimization 1 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os"
+        },
+        "n6-allmems-O2": {
+            "memory_pool": "./my_mpools/stm32n6.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options" : "--optimization 2 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os"
+        },
+        "n6-allmems-O3": {
+            "memory_pool": "./my_mpools/stm32n6.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options" : "--optimization 3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os"
+        },
+        "n6-allmems-Oauto": {
+            "memory_pool": "./my_mpools/stm32n6.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options" : "--Oauto --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os"
+        },
+
+        "profile_O3" : {
+            "memory_pool": "./my_mpools/stm32n6.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options": "-O3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os --csv-file aton_csv.csv"
+        },
+        "profile_O3_force8bits" : {
+            "memory_pool": "./my_mpools/stm32n6.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options": "--force-8bits-scale-offset -O3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os --csv-file aton_csv.csv"
+        },
+        "profile_auto" : {
+            "memory_pool": "./my_mpools/stm32n6.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options": "--Oauto --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os --csv-file aton_csv.csv"
+        },
+        "profile_O3_intRam35MB" : {
+            "memory_pool": "./my_mpools/stm32n6__intRam35MB.mpool",
+            "machine_desc": "./my_mdescs/stm32n6.mdesc",
+            "options": "-O3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os --csv-file aton_csv.csv"
+        }
+
+        //"default" : { // WARNING: DO NOT USE THIS PROFILE, as of today, this mpool provides bad .hex files (to be fixed in future neural-art compiler releases)
+        //    "memory_pool": "stm32n6.mpool",                             // File that is part of the atonn.exe delivery
+        //    "machine_desc": "stm32n6.mdesc",
+        //    "options": "--native-float --csv-file output"
+        //},
+        //"Osize": {
+        //    "memory_pool": "C:/toto/tutu/my_mpools/stm32n6_test.mpool",   // Absolute path
+        //    "machine_desc": "C:/toto/tutu/stm32n6.mdesc",
+        //    "options": "--native-float --Ocache-opt --Oclone-dma --Omax-ca-pipe 2 --csv-file output"
+        //},
+        // Add more profiles if you like to,
+        //,"my_profile": {
+        //    "memory_pool": <absolute path to mpool file> OR <relative path to mpool file> OR <mpool filename embedded with the atonn compiler>,
+        //    "machine_desc": <absolute path to mdesc file> OR <relative path to mdesc file> OR <mdesc filename embedded with the atonn compiler>,
+        //    "options": <List of options to pass to the atonn compiler /  can be found by calling the stm32ai tool with --st-neural-art help >
+        //}
+    }
+}

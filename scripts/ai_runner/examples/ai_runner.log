@@ -1,0 +1,10 @@
+[D:AiRunner] creating "AiRunner" object (v3.2)
+[D:AiRunner] resolving('desc' parameter: 'serial:921600')..
+[D:AiRunner] creating <stm_ai_runner.pb_mgr_drv.AiPbMsg object at 0x000001E576B6ABB0> (v2.0)
+[D:AiRunner] creating <stm_ai_runner.serial_hw_drv.SerialHwDriver object at 0x000001E576B6A760>
+[D:AiRunner] 'desc' parameter for 'AiPbMsg' driver: '921600'
+[D:AiRunner] connecting..
+[D:AiRunner] baud=921600 device=None timeout=0.1 io_hw_log=None
+[D:AiRunner] 0: {'type': 'serial', 'device': 'COM5', 'desc': 'STMicroelectronics STLink Virtual COM Port(COM5)', 'hwid': 'USB VID:PID=0483:3754 SER=0047004A3333511431363730 LOCATION=1-4:x.1'}
+[D:AiRunner] is_alive() STM32 - read timeout 547.0ms/500ms
+[D:AiRunner] 1: {'type': 'serial', 'device': 'COM4', 'desc': '표준 Bluetooth에서 직렬 링크(COM4)', 'hwid': 'BTHENUM\\{00001101-0000-1000-8000-00805F9B34FB}_LOCALMFG&0000\\7&36A358F5&0&000000000000_00000000'}

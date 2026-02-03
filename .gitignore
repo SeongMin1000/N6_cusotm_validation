@@ -1,0 +1,17 @@
+# Ignore everything
+*
+!/.gitignore
+
+# Keep scripts and its content
+!/scripts/
+!/scripts/**
+
+# Keep the path to NPU_Validation_Custom, and only that path.
+!/Projects/
+/Projects/*
+!/Projects/STM32N6570-DK/
+/Projects/STM32N6570-DK/*
+!/Projects/STM32N6570-DK/Applications/
+/Projects/STM32N6570-DK/Applications/*
+!/Projects/STM32N6570-DK/Applications/NPU_Custom_Validation/
+!/Projects/STM32N6570-DK/Applications/NPU_Custom_Validation/**

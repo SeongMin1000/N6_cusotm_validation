@@ -1,0 +1,100 @@
+02/02/2026 10:30:13 AM  __main__ -- Preparing compiler GCC
+02/02/2026 10:30:13 AM  __main__ -- Setting a breakpoint in main.c at line 137 (before the infinite loop)
+02/02/2026 10:30:13 AM  __main__ -- Copying network.c to project: -> C:\Users\csm\STM32Cube\Repository\Packs\STMicroelectronics\X-CUBE-AI\10.2.0\Projects\STM32N6570-DK\Applications\NPU_Validation\X-CUBE-AI\App\network.c
+02/02/2026 10:30:13 AM  __main__ -- Extracting information from the c-file
+02/02/2026 10:30:13 AM  __main__ -- Converting memory files in results/<model>/generation/ to Intel-hex with proper offsets
+02/02/2026 10:30:13 AM  __main__ -- arm-none-eabi-objcopy.exe --change-addresses 0x71000000 -Ibinary -Oihex network_atonbuf.xSPI2.raw network_atonbuf.xSPI2.hex
+02/02/2026 10:30:13 AM  __main__ -- Resetting the board...
+02/02/2026 10:30:13 AM  __main__ -- Launching command: C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\STM32_Programmer_CLI.exe -q -c port=SWD mode=powerdown freq=2000 ap=1
+02/02/2026 10:30:13 AM  __main__ --       -------------------------------------------------------------------
+                       STM32CubeProgrammer v2.21.0                  
+      -------------------------------------------------------------------
+
+ST-LINK SN  : 0047004A3333511431363730
+ST-LINK FW  : V3J16M7
+Board       : STM32N6570-DK
+Voltage     : 3.29V
+Error: Unable to get core ID
+Error: Cannot connect to access port 1!  If you are trying to connect to a device with TrustZone enabled please try to connect with HotPlug mode.  If you are trying to connect to a device which supports Debug Authentication with certificate or password, please open your device using it.
+
+02/02/2026 10:30:13 AM  __main__ -- Flashing memory xSPI2 -- 127.153 kB
+02/02/2026 10:30:16 AM  __main__ -- Flashing memory command: C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\STM32_Programmer_CLI.exe -q -c port=SWD mode=hotplug ap=1 --extload C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\ExternalLoader\MX66UW1G45G_STM32N6570-DK.stldr --download C:\Users\csm\.stm32cubemx\network_output\network_atonbuf.xSPI2.hex --verify
+02/02/2026 10:30:16 AM  __main__ --       -------------------------------------------------------------------
+                       STM32CubeProgrammer v2.21.0                  
+      -------------------------------------------------------------------
+
+ST-LINK SN  : 0047004A3333511431363730
+ST-LINK FW  : V3J16M7
+Board       : STM32N6570-DK
+Voltage     : 3.29V
+SWD freq    : 8000 KHz
+Connect mode: Hot Plug
+Reset mode  : Software reset
+Device ID   : 0x486
+Revision ID : Rev B
+Revision ID : Rev B
+Device name : ST32N657
+Device type : MCU
+Device CPU  : Cortex-M55
+BL Version  : --
+
+
+
+Opening and parsing file: network_atonbuf.xSPI2.hex
+
+
+Memory Programming ...
+  File          : network_atonbuf.xSPI2.hex
+  Size          : 124.17 KB 
+  Address       : 0x71000000
+
+
+Erasing memory corresponding to segment 0:
+Erasing external memory sectors [256 257]
+Download in Progress:
+
+
+File download complete
+Time elapsed during download operation: 00:00:01.213
+
+
+
+Verifying...
+
+
+
+
+Time elapsed during verifying operation: 00:00:00.656
+
+
+Download verified successfully
+
+
+
+02/02/2026 10:30:16 AM  __main__ -- Building project (conf= N6-DK)
+02/02/2026 10:30:16 AM  __main__ -- Compiling project with command: C:\ST\STM32CubeIDE_1.19.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.make.win32_2.2.0.202409170845\tools\bin\make.exe all GCC_PATH=C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin BUILD_CONF=N6-DK
+02/02/2026 10:31:33 AM  __main__ -- Loading internal memories & Running the program
+02/02/2026 10:31:33 AM  __main__ -- Starting gdbserver with command: C:\ST\STM32CubeIDE_1.19.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.stlink-gdb-server.win32_2.2.200.202505060755\tools\bin\ST-LINK_gdbserver.exe -d --frequency 2000 --apid 1 -v --port-number 61234 -cp C:/Program Files/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
+02/02/2026 10:31:33 AM  __main__ -- Debugging with command: C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gdb.exe -batch --command=C:/Users/csm/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/Projects/STM32N6570-DK/Applications/NPU_Validation/armgcc/n6_commands.gdb C:/Users/csm/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/Projects/STM32N6570-DK/Applications/NPU_Validation/armgcc/build/N6-DK/Project.elf
+02/02/2026 10:31:35 AM  __main__ -- 0x18003a1a in ?? ()
+Loading section .isr_vector, size 0x34c lma 0x34000000
+Loading section .text, size 0x11e84 lma 0x34000350
+Loading section .gnu.sgstubs, size 0x20 lma 0x340121e0
+Loading section .rodata, size 0x6320 lma 0x34012200
+Loading section .ARM, size 0x8 lma 0x34018520
+Loading section .init_array, size 0x4 lma 0x34018528
+Loading section .fini_array, size 0x4 lma 0x3401852c
+Loading section .data, size 0xdc lma 0x34018530
+Start address 0x34010cd8, load size 99836
+Transfer rate: 117 KB/sec, 7679 bytes/write.
+
+*****
+**Finished User setup phase. Setting BPX at end of init...
+*****
+Temporary breakpoint 1 at 0x34000a58: file ../../../Applications/NPU_Validation/Core/Src/main.c, line 137.
+
+Temporary breakpoint 1, main () at ../../../Applications/NPU_Validation/Core/Src/main.c:137
+137	  aiValidationInit();
+[Inferior 1 (Remote target) detached]
+
+02/02/2026 10:31:35 AM  __main__ -- Start operation achieved successfully
