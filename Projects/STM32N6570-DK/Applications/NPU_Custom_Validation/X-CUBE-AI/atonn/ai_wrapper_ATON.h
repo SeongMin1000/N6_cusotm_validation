@@ -41,7 +41,7 @@
 #define USE_NPU_CACHE
 #define USE_NPU_COUNTERS                1
 
-// [수정] 네트워크 개수 정의
+// [수정] AI 모델 개수 정의
 #define NPU_NETWORK_NUMBER      (2)   /* number of embedded model */
 
 

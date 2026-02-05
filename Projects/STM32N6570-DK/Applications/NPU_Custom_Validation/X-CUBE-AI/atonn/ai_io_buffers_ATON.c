@@ -19,8 +19,9 @@
 #include "ai_io_buffers_ATON.h"
 #include "ll_aton_NN_interface.h"
 
-#include "network.h"
-
+// #include "network.h"
+#include "kws.h"
+#include "img.h"
 
 
 /* ------ Allocated inputs ------ */
