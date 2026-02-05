@@ -6,7 +6,7 @@
 !/scripts/
 !/scripts/**
 
-# Keep the path to NPU_Validation_Custom, and only that path.
+# Keep the path to NPU_Custom_Validation, and only that path.
 !/Projects/
 /Projects/*
 !/Projects/STM32N6570-DK/
@@ -15,3 +15,15 @@
 /Projects/STM32N6570-DK/Applications/*
 !/Projects/STM32N6570-DK/Applications/NPU_Custom_Validation/
 !/Projects/STM32N6570-DK/Applications/NPU_Custom_Validation/**
+
+# Keep Middlewares/ST/AI/NPU/ll_aton and its content
+!/Middlewares/
+/Middlewares/*
+!/Middlewares/ST/
+/Middlewares/ST/*
+!/Middlewares/ST/AI/
+/Middlewares/ST/AI/*
+!/Middlewares/ST/AI/NPU/
+/Middlewares/ST/AI/NPU/*
+!/Middlewares/ST/AI/NPU/ll_aton/
+!/Middlewares/ST/AI/NPU/ll_aton/**
