@@ -151,7 +151,9 @@ static NN_Instance_TypeDef NN_Instance_Default;
 
 #else /* !USE_RELOC_MODE */
 
-LL_ATON_DECLARE_NAMED_NN_INSTANCE_AND_INTERFACE(Default)
+// LL_ATON_DECLARE_NAMED_NN_INSTANCE_AND_INTERFACE(Default)
+LL_ATON_DECLARE_NAMED_NN_INSTANCE_AND_INTERFACE(kws) 
+LL_ATON_DECLARE_NAMED_NN_INSTANCE_AND_INTERFACE(img)  
 
 #endif
 
@@ -218,7 +220,16 @@ static NN_Instance_TypeDef* _get_nn_instance(int idx)
   return &NN_Instance_Default;
 
 #else
-  return &NN_Instance_Default;
+  // [수정] idx가 0이면 kws, 1이면 img 반환 
+  if (idx == 0) { 
+    return &NN_Instance_kws; 
+  } 
+  else if (idx == 1) { 
+    return &NN_Instance_img; 
+  } 
+  else { 
+    return NULL; // 잘못된 인덱스 
+  } 
 #endif
 }
 
@@ -405,7 +416,13 @@ static void _populate_nn_info(struct npu_instance *instance)
   nn_info->version = ATONN_RT_VERSION;
   nn_info->rt_desc = ATONN_RT_DESC;
 
-  nn_info->name = "network";
+  // [수정] 인스턴스 주소를 비교해서 이름을 다르게 설정 
+  if (instance->impl == &NN_Instance_img) { 
+    nn_info->name = "img"; 
+  } 
+  else if (instance->impl == &NN_Instance_kws) { 
+    nn_info->name = "kws"; 
+  } 
 
   bool has_no_desc;
 
