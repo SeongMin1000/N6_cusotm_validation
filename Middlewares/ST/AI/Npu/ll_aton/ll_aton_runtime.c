@@ -748,7 +748,10 @@ LL_ATON_RT_RetValues_t LL_ATON_RT_RunEpochBlock(NN_Instance_TypeDef *nn_instance
 }
 
 /*** ATON Irq Handler ***/
-#define IRQ_ERR_MSG() LL_ATON_PRINTF("ATON_STD_IRQHandler()@%d: irqs=0x%" PRIx64 "\n", __LINE__, (uint64_t)irqs)
+// [수정] 
+// #define IRQ_ERR_MSG() LL_ATON_PRINTF("ATON_STD_IRQHandler()@%d: irqs=0x%" PRIx64 "\n", __LINE__, (uint64_t)irqs) 
+// PRIx64 대신 "llx" (long long hex)
+#define IRQ_ERR_MSG() LL_ATON_PRINTF("ATON_STD_IRQHandler()@%d: irqs=0x%llx\n", __LINE__, (uint64_t)irqs) 
 
 
 // REMEMBER: mask out all interrupt from parameter `irqs` you do NOT want to be handled in beyond function
