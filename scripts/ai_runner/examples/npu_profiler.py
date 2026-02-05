@@ -35,6 +35,15 @@ __title__ = 'NPU Utility - AiRunner Profiler'
 __version__ = '0.3'
 __author__ = 'STMicroelectronics'
 
+# ==============================================================================
+# [수정 1] 모델별 C 파일 경로 매핑
+# ==============================================================================
+MODEL_FILE_MAP = {
+    "kws": "C:/Users/user/.stm32cubemx/kws_output/kws.c",
+    "img": "C:/Users/user/.stm32cubemx/img_output/img.c",
+    # 필요하면 추가: "모델이름": "C파일경로"
+}
+
 
 _DEFAULT = 'serial:921600'
 _DEFAULT_NETWORK_FILE_PATH = 'st_ai_ws/neural_art__network/network.c'
@@ -1271,12 +1280,7 @@ def run(args):
     logger.info('%s (version %s)', __title__, __version__)
     logger.info('Creating date : %s', datetime.now().ctime())
 
-    c_npu_network = None
-    try:
-        c_npu_network = CNpuNetworkDesc(args.cfile, logger=logger)
-    except ErrorException as e:
-        logger.warning(e)
-        logger.info('')
+    # [수정] 불필요한 초기 파싱 로직 삭제함
 
     logger.info('Creating AiRunner session with `%s` descriptor', str(args.desc))
     runner = AiRunner(debug=args.debug, logger=logger)
@@ -1292,24 +1296,79 @@ def run(args):
 
     logger.info(runner)
 
-    c_name = runner.names[0] if not args.name else args.name
-    if c_name not in runner.names:
-        msg_err_ = f'c-model "{c_name}" is not available'
-        logger.error(msg_err_)
+    # ==========================================================================
+    # [모델 리스트 확보 및 반복 실행 로직]
+    # ==========================================================================
+    
+    # 1. 실행할 모델 목록 결정
+    target_models = []
+    if args.name:
+        # 사용자가 특정 모델을 지정한 경우 (--name 옵션 사용 시)
+        if args.name in runner.names:
+            target_models = [args.name]
+        else:
+            logger.error(f'c-model "{args.name}" is not available on target. Available: {runner.names}')
+            runner.disconnect()
+            return 1
+    else:
+        # 지정하지 않은 경우 보드의 모든 모델 실행
+        target_models = runner.names
+
+    if not target_models:
+        logger.error("No models found on the board.")
+        runner.disconnect()
         return 1
 
-    session: AiRunnerSession = runner.session(c_name)
-    session.summary(print_fn=logger.info, indent=1)
+    logger.info(f"Target Models for Profiling: {target_models}")
 
-    profiler = AiRunnerProfiler(session, c_network_desc=c_npu_network, logger=logger)
-    profiler.profile(batch_size=args.batch, debug=args.debug)
+    # 2. 모델 반복 루프
+    for c_name in target_models:
+        print(f"\n========================================================")
+        print(f" [PROFILING START] Model: {c_name}")
+        print(f"========================================================")
 
-    profiler.summary()
+        # 2-1. 해당 모델에 맞는 C 파일 결정 (Global 변수 MODEL_FILE_MAP 사용)
+        current_cfile = MODEL_FILE_MAP.get(c_name)
+        
+        # 매핑된 게 없으면 args.cfile(기본값) 사용하고 경고 출력
+        if not current_cfile:
+            logger.warning(f"Warning: No C-file mapped for '{c_name}' in MODEL_FILE_MAP.")
+            logger.warning(f"Trying fallback to argument: {args.cfile}")
+            current_cfile = args.cfile
+        
+        logger.info(f"Using Network C-File: {current_cfile}")
 
-    if args.plot:
-        profiler.plot()
+        # 2-2. C 파일 파싱 (CNpuNetworkDesc)
+        c_npu_network = None
+        try:
+            # 모델마다 구조가 다르므로 매번 새로 생성해야 함
+            c_npu_network = CNpuNetworkDesc(current_cfile, logger=logger)
+        except ErrorException as e:
+            logger.warning(f"Failed to parse C file for {c_name}. Profiling will lack compiler comparison.")
+            logger.warning(e)
+        except Exception as e:
+             logger.warning(f"Unexpected error parsing C file: {e}")
+
+        # 2-3. 세션 생성 및 프로파일링
+        try:
+            session: AiRunnerSession = runner.session(c_name)
+            session.summary(print_fn=logger.info, indent=1)
+
+            profiler = AiRunnerProfiler(session, c_network_desc=c_npu_network, logger=logger)
+            profiler.profile(batch_size=args.batch, debug=args.debug)
+
+            profiler.summary()
+
+            if args.plot:
+                profiler.plot()
+                
+        except Exception as e:
+            logger.error(f"Error profiling model {c_name}: {e}")
+            import traceback
+            traceback.print_exc()
 
     runner.disconnect()
+    logger.info("\nAll profiling tasks completed.")
 
     return 0
 
