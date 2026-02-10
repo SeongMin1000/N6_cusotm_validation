@@ -12,7 +12,7 @@ _sstack = _estack - _Min_Stack_Size;			   /* lower-bound of the stack (to be set
 /* Memories definition */
 MEMORY
 {
-  AXISRAM1_S (xrw) : ORIGIN = 0x34000000, LENGTH =  1024K
+  AXISRAM1_S (xrw) : ORIGIN = 0x34000000, LENGTH =  400K
 }
 
 /* Sections */

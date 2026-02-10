@@ -30,7 +30,7 @@
 				"fformat": "FORMAT_RAW",
 				"prop":	  { "rights": "ACC_WRITE", "throughput": "MID",  "latency": "MID", "byteWidth": 8, "freqRatio": 2.50, "read_power": 16.616, "write_power": 14.522 },
 				"offset": { "value": "0x34064000", "magnitude":  "BYTES" },
-				"size":   { "value": "0",        "magnitude": "KBYTES" }
+				"size":   { "value": "624",        "magnitude": "KBYTES" }
 			},
 			{
 				"fname": "AXISRAM2",
@@ -76,7 +76,7 @@
 				"fname": "xSPI1",
 				"name":  "hyperRAM",
 				"fformat": "FORMAT_RAW",
-				"prop":	  { "rights": "ACC_WRITE", "throughput": "MID", "latency": "HIGH", "byteWidth": 2, "freqRatio": 5.00, "cacheable": "CACHEABLE_ON","read_power": 380, "write_power": 340.0,  "constants_preferred": "true" },
+				"prop":	  { "rights": "ACC_WRITE", "throughput": "MID", "latency": "HIGH", "byteWidth": 2, "freqRatio": 5.00, "cacheable": "CACHEABLE_ON","read_power": 380, "write_power": 340.0, "constants_preferred": "true" },
 				"offset": { "value": "0x90000000", "magnitude":  "BYTES" },
 				"size":   { "value": "32",         "magnitude": "MBYTES" }
 			},
@@ -84,8 +84,8 @@
 				"fname": "xSPI2",
 				"name":  "octoFlash",
 				"fformat": "FORMAT_RAW",
-				"prop":	  { "rights": "ACC_READ",  "throughput": "MID", "latency": "HIGH", "byteWidth": 1, "freqRatio": 6.00, "cacheable": "CACHEABLE_ON", "read_power": 110, "write_power": 400.0,  "constants_preferred": "true" },
-				"offset": { "value": "0x71400000", "magnitude":  "BYTES" },
+				"prop":	  { "rights": "ACC_READ",  "throughput": "MID", "latency": "HIGH", "byteWidth": 1, "freqRatio": 6.00, "cacheable": "CACHEABLE_ON", "read_power": 110, "write_power": 400.0, "constants_preferred": "true" },
+				"offset": { "value": "0x71000000", "magnitude":  "BYTES" },
 				"size":   { "value": "112",         "magnitude": "MBYTES" }
 			}
 		]
