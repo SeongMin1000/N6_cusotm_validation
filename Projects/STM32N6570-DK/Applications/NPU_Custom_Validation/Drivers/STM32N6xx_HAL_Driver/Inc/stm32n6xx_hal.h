@@ -90,6 +90,7 @@ extern HAL_TickFreqTypeDef      uwTickFreq;
 /**
   * @}
   */
+#define VENC
 
 /** @defgroup SYSCFG_Exported_Constants SYSCFG Exported Constants
   * @{

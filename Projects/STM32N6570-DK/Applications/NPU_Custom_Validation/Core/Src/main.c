@@ -57,6 +57,9 @@ int main(void)
   
   system_init_post();
 
+  // [Updated] Release VENCRAM to use as AXISRAM8 (System RAM)
+  HAL_SYSCFG_DisableVENCRAMReserved();
+
 #if USE_MCU_ICACHE
   SCB_EnableICache();
 #else
