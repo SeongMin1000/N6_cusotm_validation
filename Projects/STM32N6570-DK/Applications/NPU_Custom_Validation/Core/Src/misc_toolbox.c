@@ -296,8 +296,8 @@ void RISAF_Config(void)
   set_risaf_default(RISAF8_S);          /* NPU_CACHE */
   set_risaf_default(RISAF15_S);         /* NPU_CACHE config */
 #endif
-  
-  // set_risaf_default(RISAF9_S);       /* VENC */
+  // [Updated]
+  set_risaf_default(RISAF9_S);       /* VENC */
   
 #if defined(USE_EXTERNAL_MEMORY_DEVICES) && USE_EXTERNAL_MEMORY_DEVICES == 1
 #if (NUCLEO_N6_CONFIG == 0)
