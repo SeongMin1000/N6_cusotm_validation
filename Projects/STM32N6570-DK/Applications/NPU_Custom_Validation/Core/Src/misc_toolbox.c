@@ -256,7 +256,7 @@ void NPU_Config(void)
   __HAL_RCC_CACHEAXI_CLK_ENABLE();
   __HAL_RCC_CACHEAXI_FORCE_RESET();
   __HAL_RCC_CACHEAXI_RELEASE_RESET();
-  
+
   // __HAL_RCC_CACHEAXI_CLK_SLEEP_DISABLE();
   // __HAL_RCC_NPU_CLK_SLEEP_DISABLE();
   // __HAL_RCC_RAMCFG_CLK_SLEEP_DISABLE();
@@ -295,7 +295,7 @@ void RISAF_Config(void)
 #ifdef USE_NPU_CACHE
   set_risaf_default(RISAF8_S);          /* NPU_CACHE */
   set_risaf_default(RISAF15_S);         /* NPU_CACHE config */
-#endif  
+#endif
   
   // set_risaf_default(RISAF9_S);       /* VENC */
   
@@ -333,6 +333,10 @@ void system_init_post(void)
   RCC->MEMENR |= RCC_MEMENR_AXISRAM3EN | RCC_MEMENR_AXISRAM4EN | RCC_MEMENR_AXISRAM5EN | RCC_MEMENR_AXISRAM6EN;
   RCC->MEMENR |= RCC_MEMENR_CACHEAXIRAMEN; // RCC_MEMENR_NPUCACHERAMEN;
   
+  /* [Updated] Enable VENCRAM(AXISRAM8) (128KB) */
+  RCC->MEMENR |= RCC_MEMENR_VENCRAMEN;
+  
+  /* VENCRAM(AXISRAM8) does not support SRAMSD control */
   RAMCFG_SRAM2_AXI->CR &= ~RAMCFG_CR_SRAMSD;
   RAMCFG_SRAM3_AXI->CR &= ~RAMCFG_CR_SRAMSD;
   RAMCFG_SRAM4_AXI->CR &= ~RAMCFG_CR_SRAMSD;
