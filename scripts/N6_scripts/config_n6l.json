@@ -1,7 +1,10 @@
 {
     "network.c": "C:/Users/csm/.stm32cubemx/network_output/network.c",
     "project_build_conf": "N6-DK",
-    "project_path": "C:/Users/csm/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/Projects/STM32N6570-DK/Applications/NPU_Validation",
+    // [Project Path Configuration Guide]
+    // 1. For Single Model: Use ".../Applications/NPU_Validation"
+    // 2. For Multi-Model:  Use ".../Applications/NPU_Custom_Validation"
+    "project_path": "C:/Users/csm/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/Projects/STM32N6570-DK/Applications/NPU_Custom_Validation",
     "memdump_path": "C:/Users/csm/.stm32cubemx/network_output",
     "skip_ram_data_programming": false,
     "skip_external_flash_programming": false
