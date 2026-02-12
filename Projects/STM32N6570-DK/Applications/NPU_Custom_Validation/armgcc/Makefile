@@ -1,4 +1,4 @@
-# GCC_PATH ?= "/c/Users/foobar/TOOLS/gcc-arm-none-eabi/12.2 rel1/bin"
+GCC_PATH ?= "/c/Users/foobar/TOOLS/gcc-arm-none-eabi/12.2 rel1/bin"
 ######################################
 # helpers
 ######################################
@@ -24,7 +24,7 @@ OPT = -Os -g3
 # paths
 #######################################
 BASE_PATH = ../../..
-PROJECT_PATH = $(BASE_PATH)/Applications/NPU_Validation
+PROJECT_PATH = $(BASE_PATH)/Applications/NPU_Custom_Validation
 CORE_PATH = $(PROJECT_PATH)/Core
 VALIDATION_PATH = $(PROJECT_PATH)/X-CUBE-AI/App
 MIDDLEWARES_PATH = $(PROJECT_PATH)/../../../../Middlewares/ST
