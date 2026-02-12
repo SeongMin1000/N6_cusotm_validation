@@ -37,7 +37,8 @@ __author__ = 'STMicroelectronics'
 
 
 _DEFAULT = 'serial:921600'
-_DEFAULT_NETWORK_FILE_PATH = 'st_ai_ws/neural_art__network/network.c'
+# [Update]
+_DEFAULT_NETWORK_FILE_PATH = 'C:/Users/user/st_ai_ws/neural_art__network/network.c'
 
 
 _KB = 1000  # 1024 used to report the GB/s
