@@ -39,8 +39,8 @@ __author__ = 'STMicroelectronics'
 # [수정 1] 모델별 C 파일 경로 매핑
 # ==============================================================================
 MODEL_FILE_MAP = {
-    "kws": "C:/Users/user/.stm32cubemx/kws_output/kws.c",
-    "img": "C:/Users/user/.stm32cubemx/img_output/img.c",
+    "kws": "C:/Users/user/st_ai_ws/neural_art__kws/kws.c",
+    "img": "C:/Users/user/st_ai_ws/neural_art__img/img.c",
     # 필요하면 추가: "모델이름": "C파일경로"
 }
 
