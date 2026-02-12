@@ -1,0 +1,5 @@
+# Ignore ARM GCC build output
+armgcc/build/
+
+# Ignore Middlewares build output
+armgcc/Middlewares/

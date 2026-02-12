@@ -19,11 +19,11 @@ end
 target remote 127.0.0.1:61234
 
 # Load the elf file to the board
-load C:/Users/csm/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/Projects/STM32N6570-DK/Applications/NPU_Validation/armgcc/build/N6-DK/Project.elf
+load C:/Users/csm/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/Projects/STM32N6570-DK/Applications/NPU_Custom_Validation/armgcc/build/N6-DK/Project.elf
 
 # Set temporary breakpoint, and attach commands to it
 echo Finished User setup phase. Setting BPX at end of init...
-tbreak main.c:137
+tbreak main.c:140
 	commands
 
 	# When done, stop debugging and quit gdb
