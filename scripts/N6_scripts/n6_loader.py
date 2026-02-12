@@ -321,8 +321,14 @@ if __name__ == "__main__":
                     default=False, help="Clean the project before building it (default: False)")
     N6LoaderConfig.add_args(parser=parser)
     args = parser.parse_args()
-    rv = main_n6_loader(path_to_network_c=None,     # First and second arguments are forced to None (will be handled by n6loader config after)
-                    path_to_memorydumps=None,
+
+    # [수정 1] 내가 생성한 network_output 폴더 경로를 변수로 지정
+    my_network_path = Path("C:/Users/user/.stm32cubemx/network_output/network.c")
+    # [수정2] 덤프 파일들이 있는 폴더들의 "공통 상위 경로"
+    common_dump_path = Path("C:/Users/user/.stm32cubemx/")
+
+    rv = main_n6_loader(path_to_network_c=[my_network_path],     # First and second arguments are forced to None (will be handled by n6loader config after)
+                    path_to_memorydumps=common_dump_path,
                     clean_before_build=True,
                     stlink_sn=args.st_link_serialnr,
                     port=args.st_link_port,
