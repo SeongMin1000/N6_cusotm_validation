@@ -27,3 +27,6 @@
 /Middlewares/ST/AI/NPU/*
 !/Middlewares/ST/AI/NPU/ll_aton/
 !/Middlewares/ST/AI/NPU/ll_aton/**
+
+#Logs
+*.log
